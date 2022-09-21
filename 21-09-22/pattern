@@ -1,0 +1,27 @@
+
+public class PatternPrymid {
+	static void printPattern(int input)
+	{
+		for(int row=1;row<input;row++)
+		{
+			for(int space=1;space<input-row;space++)
+			{
+				System.out.print(" ");
+			}
+			for(int column=1;column<=row;column++)
+			{
+				System.out.print(column+" ");
+			}
+			System.out.println();
+		}
+	}
+
+	public static void main(String[] args) {
+		int input;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the input Number: ");
+		input=sc.nextInt();
+		printPattern(input);
+	}
+
+}
