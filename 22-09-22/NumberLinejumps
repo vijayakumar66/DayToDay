@@ -1,0 +1,34 @@
+lass Result {
+   public static String kangaroo(int x1, int v1, int x2, int v2) {
+         int f=0;
+        String s ="";
+        while(x1<x2)
+        {
+                x1= x1+v1;
+                x2 = x2+v2;
+                if(x1==x2)
+                {
+                        f=1;
+                        break;
+                }
+        }
+        if(f==0)
+            s = "NO";
+        else
+            s = "YES";
+    return s;
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+     int x1,x2,v1,v2;
+     Scanner s=new Scanner(System.in);
+     x1=s.nextInt();
+     x2=s.nextInt();
+     v1=s.nextInt();
+     v2=s.nextInt();
+    System.out.println( kangaroo(x1,v1,x2,v2));
+    }
+}
