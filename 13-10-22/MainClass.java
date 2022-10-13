@@ -1,13 +1,10 @@
 package view;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
 import model.UserDetails;
 public class MainClass {
 	Scanner scanner = new Scanner(System.in);
-	List<UserDetails> userlist = new ArrayList<>();
 	int input;
 	HashMap<Integer, UserDetails> map = new HashMap<Integer, UserDetails>();
 	int id = 1;
@@ -23,7 +20,6 @@ public class MainClass {
 		userDetails.setDateOfBirth(scanner.next());
 		System.out.println("Enter the mobile Number");
 		userDetails.setMobile(scanner.nextLong());
-		userlist.add(userDetails);
 		System.out.println("Your userid is:" + id++);
 		return userDetails;
 	}
