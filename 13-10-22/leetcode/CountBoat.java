@@ -10,6 +10,11 @@ public class CountBoat {
 			int boatCount=0;
 			Collections.sort(list);
 			int left=0,right=list.size()-1;
+			int first=list.get(left)+list.get(left+1);
+			 if(first>limit)
+			 {
+				return list.size();
+			  }
 			while(left<right)
 			{ 
 				int sum=list.get(left)+list.get(right);
