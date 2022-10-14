@@ -11,9 +11,10 @@ public class CountBoat {
 			Collections.sort(list);
 			int left=0,right=list.size()-1;
 			int first=list.get(left)+list.get(left+1);
-			 if(first>limit)
+			 if(first>maxWeight)
 			 {
-				return list.size();
+				 System.out.println(list.size());
+				return ;
 			  }
 			while(left<right)
 			{ 
