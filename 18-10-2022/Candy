@@ -1,0 +1,40 @@
+class Solution {
+    public int candy(int[] ratings) {
+        int size=ratings.length;
+        int[] left=new int[size];
+        int[] right=new int[size];
+        int[] res=new int[size];
+        left[0]=1;right[size-1]=1;
+        int leftind=1,rightind=size-2,count=1,result=0;
+        for(int i=1;i<size;i++)
+        {
+            if(ratings[i-1]>=ratings[i]) left[leftind++]=1;
+            else{
+                count=(left[leftind-1])+1;
+                left[leftind++]=count;
+             }
+            
+        }
+         for(int i=size-1;i>=1;i--)
+        {
+            if(ratings[i-1]<=ratings[i]) 
+                right[rightind--]=1;
+            else{
+                count=(right[rightind+1])+1;
+                right[rightind--]=count;
+             }
+        }
+        for(int j=0;j<size;j++)
+        {
+            if(left[j]<right[j])
+                res[j]=right[j];
+            else
+                res[j]=left[j];
+        }
+        for(int v:res)
+        {
+            result+=v;
+        }
+        return result;
+    }
+}
