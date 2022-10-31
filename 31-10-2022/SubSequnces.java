@@ -20,7 +20,7 @@ public class SubSequnces {
 				   map1.put(str, map1.getOrDefault(str, 0)+1);
 			}
 		}
-		System.out.println(map1);
+		System.out.println(map1.size());
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
