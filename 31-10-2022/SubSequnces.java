@@ -1,33 +1,78 @@
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedList;
 
-public class SubSequnces {
-	static void subSquence(String s)
+public class NextGrerater {
+	public static class Node
 	{
-		HashMap<String,Integer> map1=new HashMap<>();
-		int len=s.length();
-		char[] charr=s.toCharArray();
-		
-		for(int i=0;i<2*len-1;i++)
-		{	
-			String str="";
-			for(int j=0;j<len;j++) {
-				if((i & (1<<j))!=0)
+		private Node next;
+		private int value;
+		public Node(int item) {
+			this.value=item;
+		}
+		 public static Node createList(int[] arr) {
+			Node head=new Node(arr[0]);
+			Node current=head;
+			for(int i=1;i<arr.length;i++)
+			{
+				current.next=new Node(arr[i]);
+				current=current.next;
+			}
+			return head;
+		}
+	}
+	public int[] greaterNode(Node head)
+	{
+		int length=findLength(head);
+		int[] res=new int[length];
+		int index=0;
+		while(head.next!=null)
+		{
+			int jump=0;
+			int greater=0;
+			boolean isFound=false;
+			
+			Node tem=head.next;
+			while(tem!=null)
+			{
+				jump++;
+				if(tem.value>head.value)
 				{
-					str+=charr[j];	
+					greater=tem.value;
+					isFound=true;
+					break;
 				}
-				if(str!=""&&str.length()!=1&&str.length()<=3)
-				   map1.put(str, map1.getOrDefault(str, 0)+1);
+				tem=tem.next;
+			}
+			if(!isFound) {
+				res[index]=0;
+				index++;
+				head=head.next;
+			}
+			else {
+				for(int i=0;i<jump;i++)
+				{
+					res[index]=greater;
+					index++;
+					head=head.next;
+				}
 			}
 		}
-		System.out.println(map1.size());
+		return res;
+	}
+	private int findLength(NextGrerater.Node head) {
+		Node current=head;
+		int count=0;
+		while(current!=null) {
+			current=current.next;
+			count++;
+		}
+		//System.out.println(count);
+		return count;
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String s="XYBYAXBY";
-		//String s="ABACDB";
-		subSquence(s);
-
+		int[] arr= {2,7,4,3,5};
+		Node head=Node.createList(arr);
+		System.out.println(Arrays.toString(new NextGrerater().greaterNode(head)) );
 	}
 
 }
